@@ -80,11 +80,11 @@ export default async (req, res) => {
 
           <form className={styles.form} onSubmit={async evt => {
             evt.preventDefault();
-            const formData = new FormData(evt.target);
+
+            const target = evt.target;
+            const formData = new FormData(target);
             const name = formData.get("name");
             const email = formData.get("email");
-
-            evt.target.reset();
 
             await fetch("/api/submitForm", {
               method: "post",
@@ -96,6 +96,8 @@ export default async (req, res) => {
                 email
               })
             })
+
+            target.reset();
 
             alert("Awesome, you'll receive an e-mail in 5 minutes! :D")
           }}>
