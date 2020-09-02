@@ -2,16 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 import emailQueue from "./queues/email";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const { name, recipient, subscribe } = req.body as { name: string; recipient: string, subscribe: boolean };
+  const { name, email } = req.body as { name: string; email: string };
 
   await emailQueue.enqueue(
     {
-      recipient,
-      name,
-      subscribe
+      recipient: email,
+      name
     },
     {
-      delay: 5 * 60 * 1000,
+      delay: 0.1 * 60 * 1000,
     }
   );
 

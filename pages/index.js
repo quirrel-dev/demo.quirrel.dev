@@ -74,14 +74,13 @@ export default async (req, res) => {
           Quirrel is currently in active development.
           
           As a proof of concept, the form below will send you an e-mail, but delayed by 5 minutes.
-          Make sure to try it out! :D
+          Make sure to try it out! 😊
 
           <form className={styles.form} onSubmit={async evt => {
             evt.preventDefault();
             const formData = new FormData(evt.target);
             const name = formData.get("name");
             const email = formData.get("email");
-            const subscribe = Boolean(formData.get("subscribe"));
 
             evt.target.reset();
 
@@ -92,8 +91,7 @@ export default async (req, res) => {
               },
               body: JSON.stringify({
                 name,
-                email,
-                subscribe
+                email
               })
             })
 
@@ -101,11 +99,6 @@ export default async (req, res) => {
           }}>
             <input name="name" placeholder="first name" required autoComplete="given-name" />
             <input name="email" placeholder="e-mail" type="email" required autoComplete="email" />
-
-            <span>
-            <input type="checkbox" name="subscribe" />
-            <label htmlFor="subscribe">Keep me up to date</label>
-            </span>
             
             <button type="submit">Submit</button>
           </form>

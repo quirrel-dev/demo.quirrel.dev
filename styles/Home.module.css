@@ -89,8 +89,3 @@
   color: white;
   transition: ease-in-out 0.2s;
 }
-
-.form input[type="checkbox"] {
-  display: inline;
-  width: unset;
-}
