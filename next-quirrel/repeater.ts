@@ -1,31 +1,29 @@
-import { createApolloFetch } from "apollo-fetch"
-
-const fetch = createApolloFetch({
-    uri: "https://api.repeater.dev/graphql",
-    
-    
-})
-
-fetch.use(({ options }, next) => {
-    if (!options.headers) {
-        options.headers = {}
-    }
-
-    options.headers["authorization"] = process.env.REPEATER_TOKEN;
-
-    next()
-})
+import axios from "axios"
 
 export async function createJob(endpoint: string, runAt: Date, body: any) {
-    await fetch({
-        query: `mutation {
+    await axios.post("https://api.repeater.dev/graphql", {
+        query: `
+        mutation CreateJob($name: String!, $endpoint: String!, $runAt: String!, $body: String!) {
             createJob(
-                name: "${Date.now()}"
-                endpoint: "${endpoint}"
+                name: $name
+                endpoint: $endpoint
                 verb: "post"
-                runAt: "${runAt.toISOString()}"
-                body: "${JSON.stringify(body)}"
-            )
-        }`
+                runAt: $runAt
+                body: $body
+            ) { name }
+        }
+        `,
+        variables: {
+            name: Date.now() + "",
+            endpoint,
+            runAt: runAt.toISOString(),
+            body: JSON.stringify(body)
+        }
+    }, {
+        headers: {
+            Authorization: "Bearer " + process.env.REPEATER_TOKEN,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
     })
 }
