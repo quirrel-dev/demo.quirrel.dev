@@ -1,47 +1,29 @@
 .container {
-  min-height: 100vh;
   padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .footer {
   width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .title span {
-  color: #0070f3;
+  color:rgb(42, 161, 152);
 }
 
 .title {
   margin: 1rem;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .title,
@@ -54,16 +36,10 @@
   font-size: 1.5rem;
 }
 
-.text {
-  max-width: 580px;
-  margin: 0 auto;
-}
-
 .code {
   margin: 20px auto;
   border-radius: 10px;
   border: 0.5px solid lightgray;
-  width: 500px;
   font-size: 1.2rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
@@ -71,7 +47,6 @@
 
 .form {
   display: block;
-  max-width: 500px;
   margin: 20px auto;
 }
 

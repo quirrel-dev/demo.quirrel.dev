@@ -20,7 +20,9 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Quirrel is the Task Queueing solution for Next.js x Vercel.
+          Quirrel is the Task Queueing solution
+          <br/>
+          for Next.js x Vercel.
         </p>
 
         <p className={styles.text}>
