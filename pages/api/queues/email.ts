@@ -1,19 +1,23 @@
-import { Queue } from "../../../next-quirrel"
-import sgMail from "@sendgrid/mail"
+import { Queue } from "../../../next-quirrel";
+import * as postmark from "postmark";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const client = new postmark.ServerClient(process.env.POSTMARK_TOKEN);
 
 interface EmailEnvelope {
-    recipient: string;
-    subject: string;
-    body: string;
+  name: string;
+  recipient: string;
+  subscribe: boolean;
 }
 
 export default Queue<EmailEnvelope>("queues/email", async (envelope) => {
-    await sgMail.send({
-        from: "quirrel@quirrel.com",
-        to: envelope.recipient,
-        subject: envelope.subject,
-        text: envelope.body
-    })
+  await client.sendEmailWithTemplate(
+    new postmark.TemplatedMessage(
+      "quirrel@quirrel.com",
+      "welcome",
+      {
+        name: envelope.name,
+      },
+      envelope.recipient
+    )
+  );
 });
