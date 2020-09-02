@@ -11,7 +11,7 @@ interface EmailEnvelope {
 export default Queue<EmailEnvelope>("queues/email", async (envelope) => {
   await client.sendEmailWithTemplate(
     new postmark.TemplatedMessage(
-      "quirrel@quirrel.dev",
+      "welcome@quirrel.dev",
       "welcome",
       {
         name: envelope.name,
