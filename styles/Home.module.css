@@ -8,7 +8,6 @@
 }
 
 .main {
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -40,7 +39,7 @@
 }
 
 .title {
-  margin: 0;
+  margin: 1rem;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -68,4 +67,30 @@
   font-size: 1.2rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.form {
+  display: block;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.form input, .form button {
+  display: block;
+  width: 100%;
+  border: 0.5px solid gray;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.form button:hover {
+  background-color: #0070f3;
+  color: white;
+  transition: ease-in-out 0.2s;
+}
+
+.form input[type="checkbox"] {
+  display: inline;
+  width: unset;
 }

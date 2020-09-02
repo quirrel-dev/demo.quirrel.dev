@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Quirrel</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -76,7 +76,7 @@ export default async (req, res) => {
           As a proof of concept, the form below will send you an e-mail, but delayed by 5 minutes.
           Make sure to try it out! :D
 
-          <form onSubmit={async evt => {
+          <form className={styles.form} onSubmit={async evt => {
             evt.preventDefault();
             const formData = new FormData(evt.target);
             const name = formData.get("name");
@@ -99,10 +99,14 @@ export default async (req, res) => {
 
             alert("Awesome, you'll receive an e-mail in 5 minutes! :D")
           }}>
-            <input name="name" placeholder="Your name ..." required />
-            <input name="email" placeholder="Your e-mail ..." type="email" required />
+            <input name="name" placeholder="first name" required autoComplete="given-name" />
+            <input name="email" placeholder="e-mail" type="email" required autoComplete="email" />
+
+            <span>
             <input type="checkbox" name="subscribe" />
             <label htmlFor="subscribe">Keep me up to date</label>
+            </span>
+            
             <button type="submit">Submit</button>
           </form>
         </p>
