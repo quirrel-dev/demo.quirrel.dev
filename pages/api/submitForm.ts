@@ -10,7 +10,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       name
     },
     {
-      delay: 0.1 * 60 * 1000,
+      delay: 5 * 60 * 1000,
     }
   );
 
