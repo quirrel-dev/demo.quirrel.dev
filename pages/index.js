@@ -12,6 +12,14 @@ export default function Home() {
       <Head>
         <title>Quirrel</title>
         <link rel="icon" href="/favicon.ico" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@skn0tt" />
+        <meta
+          name="twitter:title"
+          content="Quirrel, the Task Queueing solution for Vercel x Next.js"
+        />
+        <meta name="twitter:description" content="Quirrel is an easy-to-use task queuing solution for serverless deployments." />
       </Head>
 
       <main className={styles.main}>
@@ -21,7 +29,7 @@ export default function Home() {
 
         <p className={styles.description}>
           Quirrel is the Task Queueing solution
-          <br/>
+          <br />
           for Next.js x Vercel.
         </p>
 
@@ -69,41 +77,53 @@ export default async (req, res) => {
 }
             `.trim()}
           </SyntaxHighligher>
-          In this example, the "Welcome" email is scheduled to be sent after one day.
-          This wouldn't be possible without Quirrel!
+          In this example, the "Welcome" email is scheduled to be sent after one
+          day. This wouldn't be possible without Quirrel!
+          <br />
+          <br />
+          Quirrel is currently in active development. As a proof of concept, the
+          form below will send you an e-mail, but delayed by 5 minutes. Make
+          sure to try it out! 😊
+          <form
+            className={styles.form}
+            onSubmit={async (evt) => {
+              evt.preventDefault();
 
-          <br/><br/>
-          Quirrel is currently in active development.
-          
-          As a proof of concept, the form below will send you an e-mail, but delayed by 5 minutes.
-          Make sure to try it out! 😊
+              const target = evt.target;
+              const formData = new FormData(target);
+              const name = formData.get("name");
+              const email = formData.get("email");
 
-          <form className={styles.form} onSubmit={async evt => {
-            evt.preventDefault();
+              await fetch("/api/submitForm", {
+                method: "post",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  name,
+                  email,
+                }),
+              });
 
-            const target = evt.target;
-            const formData = new FormData(target);
-            const name = formData.get("name");
-            const email = formData.get("email");
+              target.reset();
 
-            await fetch("/api/submitForm", {
-              method: "post",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                name,
-                email
-              })
-            })
+              alert("Awesome, you'll receive an e-mail in 5 minutes! :D");
+            }}
+          >
+            <input
+              name="name"
+              placeholder="first name"
+              required
+              autoComplete="given-name"
+            />
+            <input
+              name="email"
+              placeholder="e-mail"
+              type="email"
+              required
+              autoComplete="email"
+            />
 
-            target.reset();
-
-            alert("Awesome, you'll receive an e-mail in 5 minutes! :D")
-          }}>
-            <input name="name" placeholder="first name" required autoComplete="given-name" />
-            <input name="email" placeholder="e-mail" type="email" required autoComplete="email" />
-            
             <button type="submit">Submit</button>
           </form>
         </p>
