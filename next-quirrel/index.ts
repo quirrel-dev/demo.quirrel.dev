@@ -13,7 +13,7 @@ type QueueResult<Payload> = { enqueue: Enqueue<Payload> };
 
 export function Queue<Payload>(path: string, handler: (payload: Payload) => Promise<void>): QueueResult<Payload> {
     async function nextApiHandler(req: NextApiRequest, res: NextApiResponse) {
-        const body = req.body as Payload;
+        const { body } = req.body as { body: Payload };
         console.log(`Received job to ${path}: `, body);
         try {
             await handler(body);
