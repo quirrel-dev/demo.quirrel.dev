@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { createJob } from "./repeater"
+import { createJob } from "./api"
 
 const baseUrl = "https://" + (process.env.VERCEL_URL || "localhost:3000") + "/api/"
 
@@ -13,7 +13,7 @@ type QueueResult<Payload> = { enqueue: Enqueue<Payload> };
 
 export function Queue<Payload>(path: string, handler: (payload: Payload) => Promise<void>): QueueResult<Payload> {
     async function nextApiHandler(req: NextApiRequest, res: NextApiResponse) {
-        const { body } = JSON.parse(req.body) as { body: Payload };
+        const body = req.body as Payload;
         console.log(`Received job to ${path}: `, body);
         try {
             await handler(body);
