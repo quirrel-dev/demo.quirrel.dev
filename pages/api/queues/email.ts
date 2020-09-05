@@ -1,4 +1,4 @@
-import { Queue } from "../../../next-quirrel";
+import { Queue } from "@quirrel/next";
 import * as postmark from "postmark";
 
 const client = new postmark.ServerClient(process.env.POSTMARK_TOKEN);
