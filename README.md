@@ -1,30 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Quirrel 
+Quirrel is the Task Queueing solution for Next.js x Vercel.
 
-## Getting Started
+Serverless deployments simplify a lot of things, but task queueing isn't one of them. With Quirrel, creating a queue becomes as simple as this:
 
-First, run the development server:
+```ts
+// /api/queues/email.js
+import { Queue } from "@quirrel/next"
 
-```bash
-npm run dev
-# or
-yarn dev
+export default Queue(
+  "queues/email",
+  async payload => {
+    await email.send( ... )
+  }
+)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This can then easily be used from other files:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```ts
+// /api/signup.js
+import emailQueue from "./queues/email"
 
-## Learn More
+export default async (req, res) => {
+  await createUser(...);
 
-To learn more about Next.js, take a look at the following resources:
+  await emailQueue.enqueue({
+    recipient: req.body.email,
+    subject: "How was your first day with Quirrel?",
+    ...
+  }, {
+    delay: "1d"
+  })
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In this example, the "Welcome" email is scheduled to be sent after one day. This wouldn't be possible without Quirrel!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Quirrel is currently in active development. I'll post updates [on Twitter](https://twitter.com/skn0tt). Go check out https://quirrel.dev for a proof of concept!
