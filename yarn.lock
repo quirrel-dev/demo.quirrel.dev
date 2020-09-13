@@ -1058,10 +1058,12 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2.tgz#5d92d8ad0f2bd79de2290614e74e5a12a0cda02b"
   integrity sha512-ch/16u3OVy/aIXJROwqXZjGw/tFMyG7qy2IGDA2RFjvQMtPyJJrklmwX2EcfH4+4spRI2MZKes2soI+0w2/MDQ==
 
-"@quirrel/next@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.1.1.tgz#b0d0ad4ddb6799a9dfbeb9b940105b15d1b9218e"
-  integrity sha512-AHWZbqpiSPqmJeyGKr28gW/AzCBRAGZXeP6gtoDN3hc0z9x0ghCqK5Rm8v8XH4NT6018cL1t/yD81K6hfgWATA==
+"@quirrel/next@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.2.0.tgz#4affb656d02e691293148ed3cfb3bcc0a685319e"
+  integrity sha512-+wuh4z29i1lVPct2reCzt9CCFMKniECPgyr3MLw4NzESr9SmJy9x5OZcb2PbPgWk/kRFd0gYgY7ew0TRgRvNWg==
+  dependencies:
+    secure-webhooks "^0.2.0"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -4348,6 +4350,11 @@ schema-utils@^2.6.1, schema-utils@^2.6.6:
     "@types/json-schema" "^7.0.5"
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
+
+secure-webhooks@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/secure-webhooks/-/secure-webhooks-0.2.0.tgz#d0630058d63374c98c0e79ab4864778538eec0ad"
+  integrity sha512-vMjvjaZKZHzbcNKAv4e/E7g3FFyx1gCCzhjMA2yzk2jTrKhIR0HNcGmYBWs9KrSWhg7o8xtXbCaorq4kSs0fBg==
 
 select@^1.1.2:
   version "1.1.2"
