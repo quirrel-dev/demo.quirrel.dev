@@ -24,18 +24,13 @@ export default function TaskManagement() {
           className={styles.code}
         >
           {`
-// /api/managedSignup.js
-import emailQueue from "./queues/email"
+const { jobId } = await queue.enqueue(
+  { ... },
+  { delay: "1d" }
+)
 
-export default async (req, res) => {
-  const { jobId } = await emailQueue.enqueue(
-    { ... },
-    { delay: "1d" }
-  )
-
-  // later on ...
-  await emailQueue.delete(jobId)
-}
+// later on ...
+await queue.delete(jobId)
     `.trim()}
         </SyntaxHighligher>
       </p>
@@ -52,24 +47,19 @@ export default async (req, res) => {
           className={styles.code}
         >
           {`
-// /api/idempotent.js
-import queue from "./queues/somequeue"
+// create the first job
+await queue.enqueue(
+  { ... },
+  { delay: "1d", jobId: "foo" }
+)
 
-export default async (req, res) => {
-  // create the first job
-  await queue.enqueue(
-    { ... },
-    { delay: "1d", jobId: "foo" }
-  )
+// create the second job
+await queue.enqueue(
+  { ... },
+  { delay: "1d", jobId: "foo" }
+)
 
-  // create the second job
-  await queue.enqueue(
-    { ... },
-    { delay: "1d", jobId: "foo" }
-  )
-
-  // only the first job will be executed!
-}
+// only the first job will be executed!
     `.trim()}
         </SyntaxHighligher>
         If there's already another job with the same <code>jobId</code>, the
