@@ -1,48 +1,33 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Light as SyntaxHighligher } from "react-syntax-highlighter";
 import ts from "react-syntax-highlighter/dist/cjs/languages/hljs/typescript";
 import { solarizedLight } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { Layout } from "../layout/Layout";
 
 SyntaxHighligher.registerLanguage("typescript", ts);
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Quirrel</title>
-        <link rel="icon" href="/favicon.ico" />
+    <Layout>
+      <h1 className={styles.title}>
+        Welcome to <span>Quirrel!</span>
+      </h1>
 
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@skn0tt" />
-        <meta
-          name="twitter:title"
-          content="Quirrel, the Task Queueing solution for Vercel x Next.js"
-        />
-        <meta name="twitter:description" content="Quirrel is an easy-to-use task queuing solution for serverless deployments." />
-      </Head>
+      <p className={styles.description}>
+        Quirrel is the Task Queueing solution
+        <br />
+        for Next.js x Vercel.
+      </p>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <span>Quirrel!</span>
-        </h1>
-
-        <p className={styles.description}>
-          Quirrel is the Task Queueing solution
-          <br />
-          for Next.js x Vercel.
-        </p>
-
-        <p className={styles.text}>
-          Serverless deployments simplify a lot of things, but task queueing
-          isn't one of them. With Quirrel, creating a queue becomes as simple as
-          this:
-          <SyntaxHighligher
-            language="typescript"
-            style={solarizedLight}
-            className={styles.code}
-          >
-            {`
+      <p className={styles.text}>
+        Serverless deployments simplify a lot of things, but task queueing isn't
+        one of them. With Quirrel, creating a queue becomes as simple as this:
+        <SyntaxHighligher
+          language="typescript"
+          style={solarizedLight}
+          className={styles.code}
+        >
+          {`
 // /api/queues/email.js
 import { Queue } from "@quirrel/next"
 
@@ -53,14 +38,14 @@ export default Queue(
   }
 )
             `.trim()}
-          </SyntaxHighligher>
-          This can then easily be used from other files:
-          <SyntaxHighligher
-            language="typescript"
-            style={solarizedLight}
-            className={styles.code}
-          >
-            {`
+        </SyntaxHighligher>
+        This can then easily be used from other files:
+        <SyntaxHighligher
+          language="typescript"
+          style={solarizedLight}
+          className={styles.code}
+        >
+          {`
 // /api/signup.js
 import emailQueue from "./queues/email"
 
@@ -76,69 +61,57 @@ export default async (req, res) => {
   })
 }
             `.trim()}
-          </SyntaxHighligher>
-          In this example, the "Welcome" email is scheduled to be sent after one
-          day. This wouldn't be possible without Quirrel!
-          <br />
-          <br />
-          Quirrel is currently in active development. As a proof of concept, the
-          form below will send you an e-mail, but delayed by 5 minutes. Make
-          sure to try it out! 😊
-          <form
-            className={styles.form}
-            onSubmit={async (evt) => {
-              evt.preventDefault();
+        </SyntaxHighligher>
+        In this example, the "Welcome" email is scheduled to be sent after one
+        day. This wouldn't be possible without Quirrel!
+        <br />
+        <br />
+        Quirrel is currently in active development. As a proof of concept, the
+        form below will send you an e-mail, but delayed by 5 minutes. Make sure
+        to try it out! 😊
+        <form
+          className={styles.form}
+          onSubmit={async (evt) => {
+            evt.preventDefault();
 
-              const target = evt.target;
-              const formData = new FormData(target);
-              const name = formData.get("name");
-              const email = formData.get("email");
+            const target = evt.target;
+            const formData = new FormData(target);
+            const name = formData.get("name");
+            const email = formData.get("email");
 
-              await fetch("/api/submitForm", {
-                method: "post",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  name,
-                  email,
-                }),
-              });
+            await fetch("/api/submitForm", {
+              method: "post",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name,
+                email,
+              }),
+            });
 
-              target.reset();
+            target.reset();
 
-              alert("Awesome, you'll receive an e-mail in 5 minutes! :D");
-            }}
-          >
-            <input
-              name="name"
-              placeholder="first name"
-              required
-              autoComplete="given-name"
-            />
-            <input
-              name="email"
-              placeholder="e-mail"
-              type="email"
-              required
-              autoComplete="email"
-            />
-
-            <button type="submit">Submit</button>
-          </form>
-        </p>
-      </main>
-
-      <footer className={styles.footer}>
-        Made with ❤️ by&nbsp;
-        <a
-          href="https://twitter.com/skn0tt"
-          alt="Twitter: @skn0tt"
-          target="_blank"
+            alert("Awesome, you'll receive an e-mail in 5 minutes! :D");
+          }}
         >
-          @skn0tt
-        </a>
-      </footer>
-    </div>
+          <input
+            name="name"
+            placeholder="first name"
+            required
+            autoComplete="given-name"
+          />
+          <input
+            name="email"
+            placeholder="e-mail"
+            type="email"
+            required
+            autoComplete="email"
+          />
+
+          <button type="submit">Submit</button>
+        </form>
+      </p>
+    </Layout>
   );
 }
