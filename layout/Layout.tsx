@@ -54,7 +54,6 @@ export function Layout(props: PropsWithChildren<{}>) {
         Made with ❤️ by&nbsp;
         <a
           href="https://twitter.com/skn0tt"
-          alt="Twitter: @skn0tt"
           target="_blank"
         >
           @skn0tt
