@@ -67,7 +67,7 @@ export default async (req, res) => {
         <br />
         <br />
         Quirrel is currently in active development. As a proof of concept, the
-        form below will send you an e-mail, but delayed by 5 minutes. Make sure
+        form below will send you an e-mail, but delayed by a minute. Make sure
         to try it out! 😊
         <form
           className={styles.form}
@@ -92,7 +92,7 @@ export default async (req, res) => {
 
             target.reset();
 
-            alert("Awesome, you'll receive an e-mail in 5 minutes! :D");
+            alert("Awesome, you'll receive an e-mail in a minute! :D");
           }}
         >
           <input
