@@ -1058,10 +1058,10 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2.tgz#5d92d8ad0f2bd79de2290614e74e5a12a0cda02b"
   integrity sha512-ch/16u3OVy/aIXJROwqXZjGw/tFMyG7qy2IGDA2RFjvQMtPyJJrklmwX2EcfH4+4spRI2MZKes2soI+0w2/MDQ==
 
-"@quirrel/next@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.3.0.tgz#885ec658c8b20b5997452e33091fd0ce89987487"
-  integrity sha512-sIlg6bZ2uFj6qLn/jn1z0rXlExFkdhDP/ELV46VIK6QPpioKaFDUnKyNas+ROnaUUg+iNwQTwvWuiFrcNGyqIw==
+"@quirrel/next@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.3.1.tgz#ca5c6f662c08608a45890192823c79b89d063442"
+  integrity sha512-FBE6Qp/KLuYrbnwPXQd3a+KOWXkJXhhdanr9jlKESnRbY5WSCToDBO189W2yGcG0/0R+o7vAHa+keA2GIepCwQ==
   dependencies:
     secure-webhooks "^0.2.0"
 
