@@ -10,7 +10,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     },
     {
       delay: 10 * 1000,
-      jobId: email,
+      id: email,
     }
   );
 
