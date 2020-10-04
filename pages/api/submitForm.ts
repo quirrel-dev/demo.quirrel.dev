@@ -11,7 +11,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     },
     {
       delay: 1 * 60 * 1000,
-    }
+    } as any
   );
 
   res.status(200).end();

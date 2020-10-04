@@ -1058,17 +1058,17 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-9.5.2.tgz#5d92d8ad0f2bd79de2290614e74e5a12a0cda02b"
   integrity sha512-ch/16u3OVy/aIXJROwqXZjGw/tFMyG7qy2IGDA2RFjvQMtPyJJrklmwX2EcfH4+4spRI2MZKes2soI+0w2/MDQ==
 
-"@quirrel/client@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@quirrel/client/-/client-0.2.0.tgz#e1a82ef69e79f375531e0ec9a104ceda617d5195"
-  integrity sha512-vxS2svyTPgglayeRUSkAeswEOlkQc01g0ObrPh7ZMq9FCrdBnyXuSyLJV+TvSYbslIelrGQ5W5zxvXxOirUbnA==
+"@quirrel/client@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@quirrel/client/-/client-0.3.3.tgz#2ba7bd2450bdf99e98f314fa3c496a889d3468eb"
+  integrity sha512-Q8U1w7hY4NNQ9esrR9Dquun+ofpU2HjyZp4dnq2Wxai1NIH1QeJ4Y6NUx/ViaM5uwMfIjs8df1qmdscDZ629cw==
 
-"@quirrel/next@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.4.0.tgz#11e042108184726406b9e3333d43516426bafa88"
-  integrity sha512-Fv5+u3Z5bqzzKIU1vfjsBnxMfopSUlap18WUdlZpYzO3iqoBXtj+D9HEgOQOWxLvdSIq5U+s7kIRC0ZyZDH5QA==
+"@quirrel/next@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@quirrel/next/-/next-0.4.2.tgz#27e6d5120440881c25987d0bc37405a5fab8a389"
+  integrity sha512-EHYgu1sGAVO379VnwseGlv/vzbfAB+kwBBHYAuNcG4jReEYTsqBC6pP/95zFzpu1d+HFrqZwc9bAjyJoMy65Vg==
   dependencies:
-    "@quirrel/client" "^0.2.0"
+    "@quirrel/client" "^0.3.3"
     secure-webhooks "^0.2.0"
 
 "@types/caseless@*":
