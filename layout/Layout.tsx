@@ -37,6 +37,11 @@ export function Layout(props: PropsWithChildren<{}>) {
             <a style={{ color: "blue" }}>Managed & Idempotent Jobs</a>
           </Link>
         </li>
+        <li>
+          <Link href="/distribute">
+            <a style={{ color: "blue" }}>Distribute work across lambdas</a>
+          </Link>
+        </li>
       </ul>
 
       <p>
