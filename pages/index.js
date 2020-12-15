@@ -66,8 +66,7 @@ export default async (req, res) => {
         day. This wouldn't be possible without Quirrel!
         <br />
         <br />
-        Quirrel is currently in active development. As a proof of concept, the
-        form below will send you an e-mail, but delayed by a minute. Make sure
+        The form below will send you an e-mail, but delayed by a minute. Make sure
         to try it out! 😊
         <form
           className={styles.form}
