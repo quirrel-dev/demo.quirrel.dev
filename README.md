@@ -5,10 +5,10 @@ Serverless deployments simplify a lot of things, but task queueing isn't one of 
 
 ```ts
 // /api/queues/email.js
-import { Queue } from "@quirrel/next"
+import { Queue } from "quirrel/next"
 
 export default Queue(
-  "queues/email",
+  "api/queues/email",
   async payload => {
     await email.send( ... )
   }
