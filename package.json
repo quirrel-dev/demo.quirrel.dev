@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@quirrel/next": "^0.8.1",
+    "quirrel": "^1.0.0-alpha-2-3",
     "next": "9.5.2",
     "postmark": "^2.5.5",
     "pusher": "^3.0.1",
@@ -23,7 +23,6 @@
     "@types/react": "^16.9.49",
     "@types/uuid": "^8.3.0",
     "concurrently": "^5.3.0",
-    "quirrel": "^0.8.2",
     "typescript": "^4.0.2"
   }
 }

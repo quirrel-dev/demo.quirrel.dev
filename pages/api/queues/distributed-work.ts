@@ -1,5 +1,5 @@
-import { Queue } from "@quirrel/next";
-import Pusher from "pusher"
+import { Queue } from "quirrel/next";
+import Pusher from "pusher";
 
 const pusher = new Pusher(JSON.parse(process.env.PUSHER_SERVER_CONFIG));
 
@@ -13,10 +13,13 @@ interface DistributedWorkPayload {
   pusherChannel: string;
 }
 
-export default Queue<DistributedWorkPayload>("queues/distributed-work", async ({ pusherChannel }) => {
-  const timeout = (Math.random()) + 1 * 1000;
+export default Queue<DistributedWorkPayload>(
+  "api/queues/distributed-work",
+  async ({ pusherChannel }) => {
+    const timeout = Math.random() + 1 * 1000;
 
-  pusher.trigger(pusherChannel, "started", null);
-  await delay(timeout);
-  pusher.trigger(pusherChannel, "ended", null);
-});
+    pusher.trigger(pusherChannel, "started", null);
+    await delay(timeout);
+    pusher.trigger(pusherChannel, "ended", null);
+  }
+);
